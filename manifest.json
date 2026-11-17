@@ -1,0 +1,44 @@
+{
+    "name": "PROEDGE - Experience the Authentic",
+    "short_name": "PROEDGE",
+    "description": "Premium sports shoes and accessories in Dehiwala, Sri Lanka",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0A0A0A",
+    "theme_color": "#0172AF",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "logo-stacked.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "logo-horizontal.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["shopping", "sports"],
+    "screenshots": [],
+    "prefer_related_applications": false,
+    "shortcuts": [
+        {
+            "name": "Google Reviews",
+            "short_name": "Reviews",
+            "description": "Leave a Google Review",
+            "url": "https://g.page/r/CSV9PVOFhL-fEBM/review",
+            "icons": [{ "src": "logo-stacked.svg", "sizes": "192x192" }]
+        },
+        {
+            "name": "WhatsApp",
+            "short_name": "WhatsApp",
+            "description": "Chat on WhatsApp",
+            "url": "https://wa.me/94750678675",
+            "icons": [{ "src": "logo-stacked.svg", "sizes": "192x192" }]
+        }
+    ]
+}
