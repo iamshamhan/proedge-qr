@@ -25,8 +25,8 @@
     --color-google-hover: #5C9AFE;
     --color-instagram: #E1306C;
     --color-instagram-hover: #F5609A;
-    --color-tiktok: #000000;
-    --color-tiktok-hover: #333333;
+    --color-tiktok: #242424;
+    --color-tiktok-hover: #383838;
     --color-facebook: #1877F2;
     --color-facebook-hover: #4293F7;
     --color-whatsapp: #25D366;
@@ -159,23 +159,23 @@ button {
     max-width: var(--container-max);
     width: 100%;
     margin: 0 auto;
-    padding: var(--space-8) var(--container-padding) var(--space-12);
+    padding: var(--space-4) var(--container-padding) var(--space-6);
 }
 
 /* --- Header --- */
 .header {
     text-align: center;
-    padding: var(--space-4) 0 var(--space-6);
+    padding: 0 0 var(--space-3);
 }
 
 .logo-container {
-    margin: 0 auto var(--space-4);
+    margin: 0 auto var(--space-2);
     display: inline-block;
 }
 
 .logo {
-    width: 200px;
-    height: 200px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     background: var(--color-surface);
@@ -208,13 +208,13 @@ button {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--space-8);
+    gap: var(--space-3);
 }
 
 .welcome-message {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-relaxed);
+    line-height: var(--line-height-normal);
     color: var(--color-text-secondary);
     text-align: center;
     max-width: 320px;
@@ -229,7 +229,7 @@ button {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-2) var(--space-3);
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
@@ -263,15 +263,9 @@ button {
 /* --- Links Grid --- */
 .links-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
     width: 100%;
-}
-
-@media (min-width: 400px) {
-    .links-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 /* --- Link Cards / Buttons --- */
@@ -329,7 +323,7 @@ button {
     box-shadow: 0 2px 6px rgba(60, 64, 67, 0.2);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
-    padding: var(--space-5) var(--space-6);
+    padding: var(--space-4) var(--space-5);
 }
 
 .link-card--google .icon,
@@ -423,6 +417,8 @@ button {
 /* --- Website / Coming Soon --- */
 .link-card--website {
     grid-column: 1 / -1;
+    font-size: var(--font-size-base);
+    padding: var(--space-3) var(--space-4);
 }
 
 .link-card--coming-soon {
@@ -432,6 +428,28 @@ button {
     color: var(--color-text-secondary);
     cursor: not-allowed;
     opacity: 0.8;
+}
+
+.link-card--coming-soon .label-wrap {
+    flex: 1;
+    width: auto;
+}
+
+.link-card--instagram,
+.link-card--tiktok,
+.link-card--facebook,
+.link-card--whatsapp {
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-2);
+    font-size: var(--font-size-xs);
+}
+
+.link-card--instagram .icon,
+.link-card--tiktok .icon,
+.link-card--facebook .icon,
+.link-card--whatsapp .icon {
+    width: 18px;
+    height: 18px;
 }
 
 .link-card--coming-soon:hover,
@@ -475,6 +493,60 @@ button {
     font-weight: var(--font-weight-regular);
     opacity: 0.8;
     line-height: 1.3;
+}
+
+@media (max-width: 340px) {
+    .page {
+        padding: var(--space-3) var(--space-3) var(--space-4);
+    }
+
+    .logo {
+        width: 64px;
+        height: 64px;
+    }
+
+    .brand-name {
+        font-size: var(--font-size-2xl);
+    }
+
+    .tagline {
+        font-size: var(--font-size-sm);
+        letter-spacing: 0.04em;
+    }
+
+    .welcome-message {
+        font-size: var(--font-size-xs);
+    }
+
+    .location {
+        font-size: var(--font-size-xs);
+    }
+
+    .link-card--instagram,
+    .link-card--tiktok,
+    .link-card--facebook,
+    .link-card--whatsapp {
+        gap: var(--space-1);
+        padding: var(--space-2) var(--space-1);
+    }
+
+    .link-card--instagram .icon,
+    .link-card--tiktok .icon,
+    .link-card--facebook .icon,
+    .link-card--whatsapp .icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .link-card--primary,
+    .link-card--website {
+        font-size: var(--font-size-sm);
+        padding: var(--space-3);
+    }
+
+    .link-card--website .subtitle {
+        display: none;
+    }
 }
 
 /* Keep single-line layout for social buttons without subtitles */
