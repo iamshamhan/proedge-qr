@@ -8,23 +8,23 @@ This file is the current handover source for future coding agents. Read it befor
 
 **Branch:** `main`
 
-**Last committed and pushed revision:** See `git log -1` for the latest pushed revision, which includes this UI refinement and history update.
-**Working tree after the requested push:** The UI refinement and this history update are included in the user-requested push. `.impeccable/config.json`, `.impeccable/hook.cache.json`, and the untracked `output/` folder remain uncommitted and untouched.
+**Last committed and pushed revision:** The screenshot-style restoration and history update from the latest user-requested push; see `git log -1` for the exact revision.
+**Working tree:** The screenshot-style restoration and Online Store details are included in the latest requested push. `.impeccable/config.json`, `.impeccable/hook.cache.json`, and the untracked `output/` folder remain uncommitted and untouched.
 
 - The static landing page renders the business details and configured social/review links.
 - Instagram, TikTok, Facebook, WhatsApp, and Google Review links are configured. The online-store card is intentionally disabled and marked “Coming Soon”; it has no destination URL.
 - The online-store card displays “PROEDGE Online Store” and “Browse authentic sports shoes and accessories.” while remaining disabled and marked “Coming Soon.”
 - GitHub Pages deployment is configured on pushes to `main` and by manual workflow dispatch. The status of the latest Actions run was not verified during this documentation task.
 - There is no package manifest, build script, or automated test suite. `node --check` passes for `app.js` and `config.js`; this is a static site with no build step.
-- Browser preview was checked at 320×667, 375×667, 390×844, 430×932, 768×1024, and 1440×900. The four social buttons measured equal at every size; Google Reviews and Online Store also measured equal, with no clipped card contents or horizontal overflow.
-- The page logo loaded from the relative `logo-horizontal.svg` path. Browser checks reported no console errors or failed network requests.
+- Browser preview was checked at 320×667, 344×700, 390×844, and 1440×900. The stacked logo loaded from the relative `logo-stacked.svg` path; no horizontal overflow or console errors were observed.
 - `app.js` now uses correct TikTok and WhatsApp SVG glyphs; the Coming Soon button's accessible name includes its status.
+- The prior screenshot-like header/card presentation is restored locally. The Online Store card continues to show its requested title and description and remains disabled with its Coming Soon status.
 
 ### Known Documentation and Runtime Gaps
 
 - `README.md` is not fully current: its social/button examples and Facebook/website visibility differ from `config.js`; it lists Inter and older colors while the app uses Space Grotesk/Syne and current CSS tokens; and it describes offline capability although no service worker exists.
 - `manifest.json` uses `/` for `start_url` and `scope`, while the GitHub Pages project site lives under `/proedge-qr/`. Verify installed-app behavior on the project path before changing these values.
-- Some business copy is duplicated between `index.html` and `config.js`. The tagline is part of the selected horizontal logo, while the visible introduction and showroom address are in `index.html`; keep matching business fields in sync when changing them.
+- Some business copy is duplicated between `index.html` and `config.js`. The tagline is visible text in `index.html`, while the introduction and showroom address are also in `index.html`; keep matching business fields in sync when changing them.
 - SEO and manifest descriptions still use the older “Premium sports shoes and accessories” wording; they were left untouched because the requested copy scope specified only visible landing-page text.
 - The workflow references the repository Actions secret `PAGES_TOKEN` for Pages setup. Whether it is configured is unknown; never record or expose secret values.
 - `CNAME` contains comments only; no custom domain is configured.
@@ -68,15 +68,15 @@ This file is the current handover source for future coding agents. Read it befor
 
 | Feature | Implementation and decisions | Status and verification |
 |---|---|---|
-| Static business landing page | Semantic page shell, official horizontal logo lockup, introduction, and showroom section in `index.html`. The logo supplies the visible wordmark/tagline; a visually hidden heading preserves page semantics. | Implemented; current copy and logo loading verified in local browser preview. |
+| Static business landing page | Semantic page shell, stacked logo, separate PROEDGE heading/tagline, introduction, and showroom section in `index.html`. | Implemented; current copy and logo loading verified in local browser preview. |
 | Configured contact and social cards | `config.js` supplies link labels, URLs, icons, visibility, primary CTA, and coming-soon state; `app.js` renders cards in configuration order. | Implemented; rendered link names and destinations verified in browser snapshot. External destination correctness has not been separately tested. |
 | Google Review call to action | Google Review URL is a primary full-width card. | Implemented; browser preview verified. |
 | Online-store placeholder | Empty URL plus `isComingSoon: true` keeps the website card disabled and displays a “Coming Soon” badge. It is not a live store. | Implemented by design; verified in browser snapshot. |
-| Responsive styling and interactions | `styles.css` supplies equal-height two-column social buttons, matching full-width Google/store cards, fluid logo sizing, viewport-aware page height, focus/hover styles, reduced-motion handling, and animations. | Implemented; browser checks at six phone, tablet, and desktop sizes showed matched button dimensions and no horizontal overflow or clipped card content. |
+| Responsive styling and interactions | `styles.css` supplies the previous two-column social cards, full-width Google/store cards, fluid logo sizing, viewport-aware page height, focus/hover styles, reduced-motion handling, and animations. | Existing design restored to match the user's reference; browser preview verified stacked logo and no horizontal overflow at tested widths. |
 | Link rendering safeguards and interactions | `app.js` escapes configured label and URL values, opens valid external links in a new tab with `noopener noreferrer`, and adds keyboard/touch/observer behavior. | Source inspected; no dedicated automated behavior test suite exists. |
 | SEO and PWA metadata | HTML metadata and `manifest.json` include app name, theme, icons, and Google Reviews/WhatsApp shortcuts. | Implemented; metadata has not had a dedicated social-preview or installability audit. |
 | GitHub Pages delivery | `.github/workflows/deploy.yml` deploys the repository root on pushes to `main` and manual dispatch. | Workflow source verified; latest remote Actions result not verified in this assessment. |
-| Landing-page UI refinement | Selected the existing official horizontal logo lockup to avoid repeating the wordmark/tagline; aligned showroom details; standardized social button dimensions; matched the Google Reviews and disabled Online Store card dimensions; corrected TikTok/WhatsApp icons; and exposed the Coming Soon status to assistive technology. | Implemented in `index.html`, `styles.css`, `app.js`, and `config.js`; browser and syntax checks passed at the sizes listed above. |
+| Landing-page UI refinement | The previous header and button presentation were restored to match the user's attached reference; the Online Store title/description/status, corrected TikTok/WhatsApp icons, and Coming Soon accessible name were retained. | UI restoration is currently uncommitted in `index.html` and `styles.css`; browser and syntax checks passed. |
 | Current copy refinement | Updated tagline, introduction, showroom heading/address, social labels, Google Review label, and online-store card copy; removed the unavailable catalog description. | Implemented in `index.html`/`config.js`; mobile and desktop copy verified and included in this user-requested push. |
 
 ## Current Configuration
@@ -131,14 +131,14 @@ This file is the current handover source for future coding agents. Read it befor
 4. The website card is intentionally non-clickable until a real destination URL is supplied. Do not invent a URL or make the empty URL clickable.
 5. The QR image is a print asset and is intentionally not shown on the landing page.
 6. Preserve external-link escaping, `target="_blank"`, `rel="noopener noreferrer"`, keyboard/focus behavior, touch feedback, and reduced-motion handling.
-7. The tagline is embedded in the horizontal logo lockup; `index.html` renders the introduction and showroom title/address, while `config.js` keeps matching business fields. Keep duplicated values synchronized when changing them.
+7. The tagline is rendered as visible text in `index.html`, along with the introduction and showroom title/address; `config.js` keeps matching business fields. Keep duplicated values synchronized when changing them.
 8. No custom domain or offline service worker is currently configured. Do not claim either feature is active.
 9. Preserve uncommitted working-tree changes, including `.impeccable/` files, unless the user explicitly directs otherwise.
 
 ## Next Agent Instructions
 
 1. Read this file and `AGENTS.md`, then inspect `git status --short --branch` before changing anything.
-2. Continue from the existing implementation; do not repeat the completed logo, layout, icon, or copy work. Preserve `.impeccable/` edits and the untracked `output/` folder.
+2. The screenshot-matching UI restoration in `index.html` and `styles.css` is currently uncommitted; inspect and preserve it. Do not overwrite or discard it.
 3. Keep social and Google Review URLs unchanged. Do not make the Online Store clickable or add a destination until the real store URL is supplied.
 4. For relevant app changes, run `node --check app.js` and `node --check config.js`, then test the affected behavior in the browser. For layout changes, check at least 320px and 360px and verify dimensions/overflow rather than relying on visual inspection alone.
 5. Update the status, completed/pending tasks, tests, known issues, and next-agent steps in this file at the end of every coding session; append a dated log entry instead of deleting history.
@@ -180,3 +180,10 @@ This file is the current handover source for future coding agents. Read it befor
 - Preserved all configured URLs, the empty store URL, QR assets, and GitHub Pages settings.
 - Verified `node --check app.js` and `node --check config.js`. Browser checks at 320×667, 375×667, 390×844, 430×932, 768×1024, and 1440×900 confirmed equal button dimensions, no horizontal overflow or clipped card content, a loaded relative logo path, and no console errors or failed requests. No build or automated test suite exists.
 - Updated this handover entry and pushed the UI changes to `origin/main` at the user's request. Left `.impeccable/` changes and the untracked `output/` folder untouched.
+
+### 2026-11-17 — Restoring the previous visual design
+
+- The user preferred the earlier page appearance shown in their screenshot, while retaining the new Online Store title, description, and Coming Soon status.
+- Restored the stacked logo, separate PROEDGE heading/tagline, prior spacing, showroom card, and previous social/Google button styles in `index.html` and `styles.css`. Kept the updated store details, the corrected social icons, and the accessible Coming Soon name.
+- `node --check app.js` and `node --check config.js` passed. Browser preview at narrow/mobile and desktop widths verified the stacked logo loads, the Online Store remains disabled with all requested text, and no horizontal overflow or console errors were observed.
+- The restoration and updated history were committed and pushed to `origin/main` at the user's request. Existing `.impeccable/` modifications and the untracked `output/` folder were left out.
