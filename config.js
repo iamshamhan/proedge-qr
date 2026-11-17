@@ -12,6 +12,7 @@ const PROEDGE_CONFIG = {
         tagline: 'Experience the authentic.',
         type: 'Authentic sports shoes and accessories',
         location: 'Dehiwala, Sri Lanka',
+        fullAddress: 'No. 123, Galle Road, Dehiwala 10350, Sri Lanka',
         phone: '075 067 8675',
         phoneFormatted: '+94750678675',
     },
@@ -42,9 +43,9 @@ const PROEDGE_CONFIG = {
         },
         facebook: {
             label: 'Follow on Facebook',
-            url: '', // Set your Facebook Page URL here when available
+            url: 'https://www.facebook.com/share/1C4RMiDa12/',
             icon: 'facebook',
-            visible: false, // Automatically hidden when url is empty
+            visible: true,
             isPrimary: false,
         },
         whatsapp: {
