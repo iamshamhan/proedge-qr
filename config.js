@@ -19,14 +19,8 @@ const PROEDGE_CONFIG = {
 
     // Social Media & External Links
     // Set url to null or empty string to hide the button
+    // Use isComingSoon: true for buttons that are visible but not yet clickable
     links: {
-        googleReviews: {
-            label: 'Leave Us a Google Review',
-            url: 'https://g.page/r/CSV9PVOFhL-fEBM/review',
-            icon: 'google',
-            visible: true,
-            isPrimary: true,
-        },
         instagram: {
             label: 'Follow on Instagram',
             url: 'https://www.instagram.com/pro.edge_lk',
@@ -55,12 +49,21 @@ const PROEDGE_CONFIG = {
             visible: true,
             isPrimary: false,
         },
+        googleReviews: {
+            label: 'Leave Us a Google Review',
+            url: 'https://g.page/r/CSV9PVOFhL-fEBM/review',
+            icon: 'google',
+            visible: true,
+            isPrimary: true,
+        },
         website: {
-            label: 'Visit Website',
-            url: '', // Set your website URL here when available
+            label: 'Website Coming Soon',
+            subtitle: 'Visit for catalogs & products',
+            url: '', // Will be updated when website launches
             icon: 'globe',
-            visible: false, // Automatically hidden when url is empty
+            visible: true,
             isPrimary: false,
+            isComingSoon: true,
         },
     },
 

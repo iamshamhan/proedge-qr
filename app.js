@@ -45,30 +45,67 @@ function renderLinks() {
     const links = PROEDGE_CONFIG.links;
     let html = '';
 
-    // Render primary CTA first (Google Reviews)
+    // Render in config order - socials first, then Google Reviews, then Website
     Object.entries(links).forEach(([key, link]) => {
-        if (!link.visible || !link.url || link.url.trim() === '') {
+        if (!link.visible) {
             return;
         }
 
         const iconName = link.icon || 'globe';
         const iconSVG = ICONS[iconName] || ICONS.globe;
         const isPrimary = link.isPrimary;
-        const className = isPrimary
-            ? `link-card link-card--google`
-            : `link-card link-card--${key}`;
+        const isComingSoon = link.isComingSoon;
 
-        const targetAttr = link.url.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
+        let className = `link-card link-card--${key}`;
+        if (isPrimary) {
+            className += ' link-card--primary';
+        }
+        if (isComingSoon) {
+            className += ' link-card--coming-soon';
+        }
 
-        html += `
-            <a href="${escapeHtml(link.url)}"
-               class="${escapeHtml(className)}"
-               ${targetAttr}
-               aria-label="${escapeHtml(link.label)}">
-                <span class="icon" aria-hidden="true">${iconSVG}</span>
-                <span class="label">${escapeHtml(link.label)}</span>
-            </a>
-        `;
+        // Determine if link should be clickable
+        const hasValidUrl = link.url && link.url.trim() !== '' && link.url.startsWith('http');
+        const isClickable = hasValidUrl && !isComingSoon;
+
+        let hrefAttr = '#';
+        let targetAttr = '';
+        let clickHandler = '';
+
+        if (isClickable) {
+            hrefAttr = escapeHtml(link.url);
+            targetAttr = ' target="_blank" rel="noopener noreferrer"';
+        } else {
+            clickHandler = ' tabindex="0"';
+        }
+
+        // Build label with optional subtitle
+        let labelHtml = `<span class="label">${escapeHtml(link.label)}</span>`;
+        if (link.subtitle) {
+            labelHtml += `<span class="subtitle">${escapeHtml(link.subtitle)}</span>`;
+        }
+
+        if (isClickable) {
+            html += `
+                <a href="${hrefAttr}"
+                   class="${escapeHtml(className)}"
+                   ${targetAttr}
+                   aria-label="${escapeHtml(link.label)}">
+                    <span class="icon" aria-hidden="true">${iconSVG}</span>
+                    <span class="label-wrap">${labelHtml}</span>
+                </a>
+            `;
+        } else {
+            html += `
+                <button class="${escapeHtml(className)}"
+                        aria-label="${escapeHtml(link.label)}"
+                        disabled${clickHandler}>
+                    <span class="icon" aria-hidden="true">${iconSVG}</span>
+                    <span class="label-wrap">${labelHtml}</span>
+                    ${isComingSoon ? '<span class="coming-soon-badge">Coming Soon</span>' : ''}
+                </button>
+            `;
+        }
     });
 
     container.innerHTML = html;
