@@ -57,7 +57,8 @@ const PROEDGE_CONFIG = {
             isPrimary: true,
         },
         website: {
-            label: 'Online Store',
+            label: 'PROEDGE Online Store',
+            subtitle: 'Browse authentic sports shoes and accessories.',
             url: '', // Will be updated when website launches
             icon: 'globe',
             visible: true,
