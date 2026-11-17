@@ -164,9 +164,12 @@ Consistent 4px base unit (`--space-1` = 4px)
 
 ### GitHub Pages (Automatic)
 
-1. Push to `main` branch
-2. GitHub Actions workflow deploys automatically
-3. Visit: `https://iamshamhan.github.io/proedge-qr/`
+1. In **Settings → Pages**, set the source to **GitHub Actions**.
+2. Add a repository Actions secret named `PAGES_TOKEN` containing a personal access token with access to this repository and permission to manage Pages. The workflow uses it to enable Pages when GitHub has not created the Pages site yet.
+3. Push to `main` branch; GitHub Actions deploys automatically.
+4. Visit: `https://iamshamhan.github.io/proedge-qr/`
+
+Create the secret under **Settings → Secrets and variables → Actions → New repository secret**. Do not put the token in source code.
 
 ### Manual Deployment
 
