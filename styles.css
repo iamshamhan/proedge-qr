@@ -128,6 +128,7 @@ body {
     color: var(--color-text-primary);
     background-color: var(--color-bg);
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
 }
@@ -174,13 +175,10 @@ button {
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: var(--color-surface);
-    padding: var(--space-4);
-    border: 2px solid var(--color-border);
+    width: clamp(112px, 32vw, 144px);
+    height: auto;
+    border-radius: var(--radius-md);
+    object-fit: contain;
 }
 
 .brand-name {
@@ -205,7 +203,6 @@ button {
 
 /* --- Content --- */
 .content {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
@@ -264,7 +261,7 @@ button {
 .links-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2);
+    gap: var(--space-3);
     width: 100%;
 }
 
@@ -441,7 +438,7 @@ button {
 .link-card--whatsapp {
     gap: var(--space-2);
     padding: var(--space-3) var(--space-2);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
 }
 
 .link-card--instagram .icon,
@@ -497,12 +494,11 @@ button {
 
 @media (max-width: 340px) {
     .page {
-        padding: var(--space-3) var(--space-3) var(--space-4);
+        padding: var(--space-2) var(--space-3) var(--space-2);
     }
 
     .logo {
-        width: 64px;
-        height: 64px;
+        width: 96px;
     }
 
     .brand-name {
@@ -510,16 +506,25 @@ button {
     }
 
     .tagline {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-base);
         letter-spacing: 0.04em;
     }
 
+    .content {
+        gap: var(--space-2);
+    }
+
     .welcome-message {
-        font-size: var(--font-size-xs);
+        font-size: 0.8125rem;
+        line-height: 1.35;
     }
 
     .location {
         font-size: var(--font-size-xs);
+    }
+
+    .links-grid {
+        gap: var(--space-2);
     }
 
     .link-card--instagram,
@@ -528,6 +533,7 @@ button {
     .link-card--whatsapp {
         gap: var(--space-1);
         padding: var(--space-2) var(--space-1);
+        font-size: 0.8125rem;
     }
 
     .link-card--instagram .icon,
@@ -569,8 +575,8 @@ button {
 
 /* --- Footer --- */
 .footer {
-    margin-top: auto;
-    padding: var(--space-6) 0 var(--space-4);
+    margin-top: var(--space-4);
+    padding: var(--space-2) 0 var(--space-1);
     text-align: center;
 }
 
