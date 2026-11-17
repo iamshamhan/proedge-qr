@@ -9,10 +9,10 @@ const PROEDGE_CONFIG = {
     // Business Information
     business: {
         name: 'PROEDGE',
-        tagline: 'Experience the authentic.',
+        tagline: 'EXPERIENCE THE AUTHENTIC.',
         type: 'Authentic sports shoes and accessories',
         location: 'Dehiwala, Sri Lanka',
-        fullAddress: 'No 32 Attidiya Road Kawdana, Dehiwala, 10350',
+        fullAddress: 'No. 32, Attidiya Road, Kawdana, Dehiwala, 10350',
         phone: '075 067 8675',
         phoneFormatted: '+94750678675',
     },
@@ -22,43 +22,42 @@ const PROEDGE_CONFIG = {
     // Use isComingSoon: true for buttons that are visible but not yet clickable
     links: {
         instagram: {
-            label: 'Follow on Instagram',
+            label: 'Follow us on Instagram',
             url: 'https://www.instagram.com/pro.edge_lk',
             icon: 'instagram',
             visible: true,
             isPrimary: false,
         },
         tiktok: {
-            label: 'Follow on TikTok',
+            label: 'Follow us on TikTok',
             url: 'https://www.tiktok.com/@pro.edge7',
             icon: 'tiktok',
             visible: true,
             isPrimary: false,
         },
         facebook: {
-            label: 'Follow on Facebook',
+            label: 'Follow us on Facebook',
             url: 'https://www.facebook.com/share/1C4RMiDa12/',
             icon: 'facebook',
             visible: true,
             isPrimary: false,
         },
         whatsapp: {
-            label: 'Chat on WhatsApp',
+            label: 'Chat with us on WhatsApp',
             url: 'https://wa.me/94750678675',
             icon: 'whatsapp',
             visible: true,
             isPrimary: false,
         },
         googleReviews: {
-            label: 'Leave Us a Google Review',
+            label: 'Share Your Experience on Google',
             url: 'https://g.page/r/CSV9PVOFhL-fEBM/review',
             icon: 'google',
             visible: true,
             isPrimary: true,
         },
         website: {
-            label: 'Visit Website',
-            subtitle: 'Visit for catalogs & products',
+            label: 'Online Store',
             url: '', // Will be updated when website launches
             icon: 'globe',
             visible: true,
